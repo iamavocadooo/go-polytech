@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
-import DocumentPicker from "react-native-document-picker";
 import { CustomDrawer } from "../ui/CustomDrawer";
 import Poly from '../images/poly.jpeg'
 import { Button } from "react-native";
