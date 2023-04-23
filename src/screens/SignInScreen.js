@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Image, Button } from "react-native";
 import Logo from '../images/logo.jpg'
 import { SignIn } from "../components/SignIn";
+import { AppContext } from "../ContextApi/context";
 
 
 export const SignInScreen = ({navigation}) => {

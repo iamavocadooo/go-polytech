@@ -5,19 +5,22 @@ import { AuthNavigation } from './src/navigation/AuthNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { NoSNavigation } from './src/navigation/NoSNavigation';
 import { SNavigation } from './src/navigation/SNavigation';
+import { AppContext, AppProvider } from './src/ContextApi/context';
+import { useContext } from 'react';
+import Main from './src/main/Main';
 
 
-
-const Stack = createNativeStackNavigator();
 
 export default function App() {
+  let content = <AuthNavigation/>
+  // 
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        {/* <NoSNavigation /> */}
-        <SNavigation/>
-        {/* <AuthNavigation/> */}
-      </NavigationContainer>
+      <AppProvider>
+        <NavigationContainer>
+          <Main/>
+        </NavigationContainer>
+      </AppProvider>
     </View>
   );
 }
@@ -25,6 +28,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'blue',
   },
 });
