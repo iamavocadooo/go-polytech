@@ -4,9 +4,9 @@ import React from "react";
 
 const AppContext = React.createContext()
 
-export const AppProvader = ({children}) =>{
+export const AppProvider = ({children}) =>{
     return(
-        <AppContext.Provider value={}>
+        <AppContext.Provider>
             {children}
         </AppContext.Provider>
     )

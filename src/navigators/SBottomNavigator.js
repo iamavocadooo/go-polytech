@@ -2,11 +2,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Colledge } from '../screens/ColledgeScreen';
 import { SubmitAppScreen } from '../screens/SubmitAppScreen';
 import { SignInScreen } from '../screens/SignInScreen';
-import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons'
+import {Ionicons, Entypo, MaterialCommunityIcons, AntDesign} from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
-export const NoSBottomNavigator = () => {
+export const SBottomNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -32,7 +32,27 @@ export const NoSBottomNavigator = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="application-edit" color={color} size={size} />
+            <Entypo name="chat" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Ss"
+        component={SubmitAppScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account-cash" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Sa"
+        component={SubmitAppScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="user" color={color} size={size} />
           ),
         }}
       />

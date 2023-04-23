@@ -4,39 +4,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthNavigation } from './src/navigation/AuthNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { NoSNavigation } from './src/navigation/NoSNavigation';
+import { SNavigation } from './src/navigation/SNavigation';
 
-function HomeScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button onPress={() => navigation.navigate('H')} title='df'/>
-    </View>
-  );
-}
 
-function HScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>HScreen</Text>
-    </View>
-  );
-}
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <NoSNavigation/>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <NavigationContainer>
+        {/* <NoSNavigation /> */}
+        <SNavigation/>
+        {/* <AuthNavigation/> */}
+      </NavigationContainer>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'blue',
   },
 });
