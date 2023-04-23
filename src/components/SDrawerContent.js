@@ -8,8 +8,8 @@ export const SDrawerContent = (props) => {
     return (
         <DrawerContentScrollView {...props}>
           <DrawerItemList {...props} />
-          <DrawerItem label="Режим а" onPress={() => setLogin('2')}/>
-          <DrawerItem label="Выйти из аккаунта" onPress={() => setLogin('1')}/>
+          <DrawerItem label="Режим а" onPress={() => props.navigation.navigate('NoS', {screen: ' '})}/>
+          <DrawerItem label="Выйти из аккаунта" onPress={() => props.navigation.replace('Auth', {screen: 'Login'})}/>
         </DrawerContentScrollView>
     )
 }

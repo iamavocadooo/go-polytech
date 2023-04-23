@@ -8,6 +8,7 @@ import { SNavigation } from './src/navigation/SNavigation';
 import { AppContext, AppProvider } from './src/ContextApi/context';
 import { useContext } from 'react';
 import Main from './src/main/Main';
+import { AppNavigation } from './src/navigation/AppNavigation';
 
 
 
@@ -18,7 +19,7 @@ export default function App() {
     <View style={styles.container}>
       <AppProvider>
         <NavigationContainer>
-          <Main/>
+          <AppNavigation/>
         </NavigationContainer>
       </AppProvider>
     </View>

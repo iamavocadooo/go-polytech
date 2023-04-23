@@ -1,16 +1,17 @@
 import React from "react";
-import { Button, Pressable, StyleSheet, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button, Pressable, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 
 export const CustomButton = ({text, onPress}) => {
     return (
       <View>
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity
+          style={styles.container}
+          activeOpacity={0.8}
+          onPress={onPress}
+        >
           <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>
-        <Button title="df" onPress={onPress}/>
-
       </View>
     );
 }

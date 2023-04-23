@@ -3,16 +3,20 @@ import { AuthScreen, SignInScreen } from "../screens/SignInScreen";
 import { SignUpScreen } from "../screens/SignUpScreen";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AuthNavigation } from "./AuthNavigation";
+import { NoSNavigation } from "./NoSNavigation";
+import { SNavigation } from "./SNavigation";
 
 const Stack = createNativeStackNavigator()
 
-export const AuthNavigation = ({navigation}) => {
+export const AppNavigation = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false
         }}>
-          <Stack.Screen name="Login" component={SignInScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Auth" component={AuthNavigation} />
+          <Stack.Screen name="NoS" component={NoSNavigation} />
+          <Stack.Screen name="S" component={SNavigation} />
         </Stack.Navigator>
     );
 }
