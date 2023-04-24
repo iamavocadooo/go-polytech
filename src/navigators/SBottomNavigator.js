@@ -2,7 +2,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Colledge } from '../screens/ColledgeScreen';
 import { SubmitAppScreen } from '../screens/SubmitAppScreen';
 import { SignInScreen } from '../screens/SignInScreen';
-import {Ionicons, Entypo, MaterialCommunityIcons, AntDesign} from '@expo/vector-icons'
+import {Ionicons, FontAwesome, Entypo, MaterialCommunityIcons, AntDesign} from '@expo/vector-icons'
+import { ChatScreen } from '../screens/ChatScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,13 +23,13 @@ export const SBottomNavigator = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" color={color} size={size} />
+            <FontAwesome name="newspaper-o" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="S"
-        component={SubmitAppScreen}
+        name="Chat"
+        component={ChatScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (

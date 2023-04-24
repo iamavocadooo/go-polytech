@@ -13,12 +13,10 @@ export const SignUp = ({navigation}) => {
     const[passwordValue, setPasswordValue] = useState('');
     const[confirmPasswordValue, setConfirmPasswordValue] = useState('');
     const handleSignUp = (email, password) => {
-      let flag = false;
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        navigation.navigate('NoS', {screen: " "})
         // ...
       })
       .catch((error) => {

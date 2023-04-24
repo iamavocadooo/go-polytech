@@ -3,26 +3,13 @@ import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
 import { CustomDrawer } from "../ui/CustomDrawer";
 import Poly from '../images/poly.jpeg'
 import { Button } from "react-native";
+import DocumentPicker, {DocumentPickerUtil} from 'react-native-document-picker'
 
 export const SubmitAppScreen = ({navigation}) => {
   const file = async() => {
-    try {
-      const result = await DocumentPicker.show({
-        type: 'application/pdf',
-      });
-      console.log(
-        result.uri,
-        result.type, // mime type
-        result.name,
-        result.size
-      );
-    } catch (err) {
-      if (DocumentPicker.isCancel(err)) {
-        // User cancelled the picker
-      } else {
-        throw err
-      }
-    }
+    DocumentPicker.pick({
+      type: [DocumentPicker.types.images]
+    });
   }
     return (
       <View style={styles.wrapper}>

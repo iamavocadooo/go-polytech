@@ -14,7 +14,6 @@ export const AppNavigation = () => {
         <Stack.Navigator screenOptions={{
             headerShown: false
         }}>
-          <Stack.Screen name="Auth" component={AuthNavigation} />
           <Stack.Screen name="NoS" component={NoSNavigation} />
           <Stack.Screen name="S" component={SNavigation} />
         </Stack.Navigator>
