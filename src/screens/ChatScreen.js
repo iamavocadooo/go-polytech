@@ -3,7 +3,6 @@ import React, { useCallback, useLayoutEffect, useState } from "react";
 import { GiftedChat } from "react-native-gifted-chat/lib";
 import {collection, addDoc, orderBy, query, onSnapshot, doc} from 'firebase/firestore'
 import { auth, database } from "../../firebase";
-import { ref } from "firebase/storage";
 
 export const ChatScreen = () => {
     const [messages, setMessages] = useState([])
