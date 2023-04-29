@@ -7,7 +7,6 @@ import { ref } from "firebase/storage";
 
 export const ChatScreen = () => {
     const [messages, setMessages] = useState([])
-    const navigation = useNavigation()
 
     useLayoutEffect(() => {
         const collectionRef = collection(database, 'chats')
@@ -18,7 +17,7 @@ export const ChatScreen = () => {
             setMessages(
                 snapshot.docs.map(doc => ({
                     _id: doc.id,
-                    createdAt: doc.data().createdAt,
+                    createdAt: doc.data().createdAt.toDate(),
                     text: doc.data().text,
                     user: doc.data().user
                 }))

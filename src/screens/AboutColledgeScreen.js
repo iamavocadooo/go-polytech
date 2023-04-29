@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import { CustomDrawer } from "../ui/CustomDrawer";
+import { CardList } from "../components/CardList";
 
-export const Colledge = ({}) => {
+export const AboutColledgeScreen = ({}) => {
   return (
-    <View style={styles.wrapper}>
+    <View>
+      <CardList/>
     </View>
   );
 }

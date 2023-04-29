@@ -4,7 +4,7 @@ import { Button, Pressable, StyleSheet, Text, View, TouchableOpacity } from "rea
 
 export const CustomButton = ({text, onPress}) => {
     return (
-      <View>
+      <View style={{width: '100%'}}>
         <TouchableOpacity
           style={styles.container}
           activeOpacity={0.8}

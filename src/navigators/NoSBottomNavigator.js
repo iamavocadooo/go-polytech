@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Colledge } from '../screens/ColledgeScreen';
+import { AboutColledgeScreen } from '../screens/AboutColledgeScreen';
 import { SubmitAppScreen } from '../screens/SubmitAppScreen';
 import { SignInScreen } from '../screens/SignInScreen';
 import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons'
@@ -18,7 +18,7 @@ export const NoSBottomNavigator = () => {
     >
       <Tab.Screen
         name="CG"
-        component={Colledge}
+        component={AboutColledgeScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (

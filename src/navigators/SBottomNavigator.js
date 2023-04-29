@@ -1,9 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Colledge } from '../screens/ColledgeScreen';
+import { Colledge } from '../screens/AboutColledgeScreen';
 import { SubmitAppScreen } from '../screens/SubmitAppScreen';
 import { SignInScreen } from '../screens/SignInScreen';
 import {Ionicons, FontAwesome, Entypo, MaterialCommunityIcons, AntDesign} from '@expo/vector-icons'
 import { ChatScreen } from '../screens/ChatScreen';
+import { LentaScreen } from '../screens/LentaScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
+import { BankScreen } from '../screens/BankScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +21,8 @@ export const SBottomNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="CG"
-        component={Colledge}
+        name="Lenta"
+        component={LentaScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
@@ -38,8 +41,8 @@ export const SBottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Ss"
-        component={SubmitAppScreen}
+        name="Bank"
+        component={BankScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
@@ -48,8 +51,8 @@ export const SBottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Sa"
-        component={SubmitAppScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
