@@ -1,13 +1,13 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export const GoSignUp = ({navigation}) => {
+export const GoSignUp = ({navigation, setError}) => {
     return (
       <View style={styles.wrapper}>
         <Text>У Вас нет аккаунта? </Text>
         <Pressable
           style={{ height: 30, justifyContent: "flex-start", borderWidth: 0}}
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => {setError(false); navigation.navigate("SignUp")}}
         >
           <Text style={styles.text}>Регистрация</Text>
         </Pressable>
@@ -17,12 +17,13 @@ export const GoSignUp = ({navigation}) => {
 
 const styles = StyleSheet.create({
     wrapper: {
+        width: '100%',
         flexDirection: 'row',
-        height: '100%',
-        marginTop: 20
+        marginTop: 20,
+        justifyContent: 'center',
     },
     text: {
         color: '#3B71F3',
-        fontWeight: "bold"
+        fontWeight: "bold",
     }
 })

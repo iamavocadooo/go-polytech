@@ -2,11 +2,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Colledge } from '../screens/AboutColledgeScreen';
 import { SubmitAppScreen } from '../screens/SubmitAppScreen';
 import { SignInScreen } from '../screens/SignInScreen';
-import {Ionicons, FontAwesome, Entypo, MaterialCommunityIcons, AntDesign} from '@expo/vector-icons'
+import {Ionicons, FontAwesome, FontAwesome5, Entypo, MaterialCommunityIcons, AntDesign} from '@expo/vector-icons'
 import { ChatScreen } from '../screens/ChatScreen';
 import { LentaScreen } from '../screens/LentaScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { BankScreen } from '../screens/BankScreen';
+import { ChatsScreen } from '../screens/ChatsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,11 +33,21 @@ export const SBottomNavigator = () => {
       />
       <Tab.Screen
         name="Chat"
-        component={ChatScreen}
+        component={ChatsScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Entypo name="chat" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chast"
+        component={LentaScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="user-friends" color={color} size={size} />
           ),
         }}
       />
