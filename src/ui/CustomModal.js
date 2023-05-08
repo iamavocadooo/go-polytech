@@ -30,14 +30,15 @@ export const CustomModal = ({modalVisible, setModalVisible, navigation}) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <CustomInput placeholder={'логин'} value={loginValue} setValue={setLoginValue} secureTextEntry={false}/>
-            <CustomInput placeholder={'пароль'} value={passwordValue} setValue={setPasswordValue} secureTextEntry={true}/>
+            {/* <CustomInput placeholder={'логин'} value={loginValue} setValue={setLoginValue} secureTextEntry={false}/>
+            <CustomInput placeholder={'пароль'} value={passwordValue} setValue={setPasswordValue} secureTextEntry={true}/> */}
+            <Text>К сожалению на данный момент Вы не являетесь студентом колледжа!</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {setModalVisible(!modalVisible)
-                navigation.navigate('S', {screen: ' '})
+                
                 }}>
-              <Text style={styles.textStyle}>Войти</Text>
+              <Text style={styles.textStyle}>Хорошо</Text>
             </Pressable>
           </View>
         </View>

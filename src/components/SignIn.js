@@ -1,33 +1,58 @@
-import React, { useContext, useState } from "react";
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { View, StyleSheet, TextInput, Text, ActivityIndicator } from "react-native";
 import { THEME } from "../ui/Theme";
 import { CustomInput } from "../ui/CustomInput";
 import { CustomButton } from "../ui/CustomButton";
 import { GoSignUp } from "./GoSignUp";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, browserSessionPersistence, setPersistence, FacebookAuthProvider } from "firebase/auth";
 import { auth } from "../../firebase";
 import { AppContext } from "../ContextApi/context";
+import * as SecureStore from 'expo-secure-store';
+
 
 export const SignIn = ({navigation}) => {
-    const{f} = useContext(AppContext)
+    const{f, setUserToken, setLocalEmail, getLocalEmail, Email, Password} = useContext(AppContext)
     const[error, setError] = useState(false)
+    const [loading, setLooading] = useState(true)
+
     const handleSignIn = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
           console.log(user)
+          setLocalEmail(email, password)
           f()
-          // ...
+          setUserToken(true)
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setError(true)
           console.log(errorMessage)
-          // ..
         });
     }
+      getLocalEmail()
+      if (Email) {
+        console.log(Email);
+        signInWithEmailAndPassword(auth, Email, Password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            f();
+            setUserToken(true);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+          });
+      } 
+    
+      
+    
+
     const[loginValue, setLoginValue] = useState('');
     const[passwordValue, setPasswordValue] = useState('');
     return(

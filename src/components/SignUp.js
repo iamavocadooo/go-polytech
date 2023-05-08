@@ -10,7 +10,7 @@ import { auth, database } from "../../firebase";
 
 
 export const SignUp = ({navigation}) => {
-    const {f} = useContext(AppContext)
+    const {f, setUserToken} = useContext(AppContext)
     const[loginValue, setLoginValue] = useState('');
     const[passwordValue, setPasswordValue] = useState('');
     const[error, setError] = useState(false)
@@ -46,6 +46,7 @@ export const SignUp = ({navigation}) => {
           isStudent: false,
           nickName: ''
         })
+        setUserToken(true)
         f()
       })
       .catch((error) => {

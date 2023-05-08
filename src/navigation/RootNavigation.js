@@ -9,16 +9,17 @@ import { AppNavigation } from "./AppNavigation";
 
 
 export const RootNavigation = () => {
-    const {user, setUser} = useContext(AppContext)
+    const {userToken, setUserToken, isLoggedIn} = useContext(AppContext)
     const [loading, setLoading] = useState(true)
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,
             async authenticadUser => {
-                authenticadUser ? setUser(authenticadUser) : setUser(null);
+                authenticadUser ? setUserToken(authenticadUser) : setUserToken(null);
                 setLoading(false)
             })
             return () => unsubscribe();
-    }, [user]);
+    }, [userToken]);
     if (loading) {
         return(
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -28,7 +29,7 @@ export const RootNavigation = () => {
     }
     return(
         <NavigationContainer>
-            {user ? <AppNavigation/> : <AuthNavigation/>}
+            {userToken ? <AppNavigation/> : <AuthNavigation/>}
         </NavigationContainer>
     )
 }

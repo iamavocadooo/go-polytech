@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-export const Chat = () =>{
+export const Chat = ({navigation}) =>{
     return(
         <TouchableOpacity style={styles.wrapper}>
-
+            
         </TouchableOpacity>
     )
 }

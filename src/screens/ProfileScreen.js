@@ -12,7 +12,7 @@ import yoda from '../images/yoda.jpg'
 import { AppContext } from "../ContextApi/context";
 
 export const ProfileScreen = () => {
-    const{userInfo, f} = useContext(AppContext)
+    const{userInfo} = useContext(AppContext)
     console.log(userInfo)
     return(
         <View style={styles.wrapper}>
