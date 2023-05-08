@@ -5,10 +5,12 @@ import { CustomInput } from "../ui/CustomInput";
 import { GoSignIn } from "./GoSignIn";
 import { AppContext } from "../ContextApi/context";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import {collection, addDoc, orderBy, query, onSnapshot, doc} from 'firebase/firestore'
+import { auth, database } from "../../firebase";
 
 
 export const SignUp = ({navigation}) => {
+    const {f} = useContext(AppContext)
     const[loginValue, setLoginValue] = useState('');
     const[passwordValue, setPasswordValue] = useState('');
     const[error, setError] = useState(false)
@@ -34,7 +36,17 @@ export const SignUp = ({navigation}) => {
         // Signed in 
         const user = userCredential.user;
         setError(false)
-        // ...
+        addDoc(collection(database, "users"), {
+          studentId: auth.currentUser.uid,  
+          name:'',
+          surname: '',
+          dadname: '',
+          chats: [],
+          posts: [],
+          isStudent: false,
+          nickName: ''
+        })
+        f()
       })
       .catch((error) => {
         const errorCode = error.code;

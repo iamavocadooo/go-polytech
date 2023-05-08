@@ -18,8 +18,8 @@ export const CardList = () => {
 
     return (
       <View>
-        <Button title="Add" onPress={handleAdd}/>
-        <Button title="Delete" color={'red'} onPress={handleDelete}/>
+        {/* <Button title="Add" onPress={handleAdd}/>
+        <Button title="Delete" color={'red'} onPress={handleDelete}/> */}
         <ScrollView>
           <View style={{paddingHorizontal: 18}}>
             {movies.map((movie) => (

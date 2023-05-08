@@ -6,8 +6,10 @@ import { CustomButton } from "../ui/CustomButton";
 import { GoSignUp } from "./GoSignUp";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import { AppContext } from "../ContextApi/context";
 
 export const SignIn = ({navigation}) => {
+    const{f} = useContext(AppContext)
     const[error, setError] = useState(false)
     const handleSignIn = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
@@ -15,6 +17,7 @@ export const SignIn = ({navigation}) => {
           // Signed in 
           const user = userCredential.user;
           console.log(user)
+          f()
           // ...
         })
         .catch((error) => {
