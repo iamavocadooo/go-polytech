@@ -28,7 +28,7 @@ export const RootNavigation = () => {
     }
     return(
         <NavigationContainer>
-            {user ? <AppNavigation/> : <AuthNavigation/>}
+            {user && auth.currentUser.emailVerified ? <AppNavigation/> : <AuthNavigation/>}
         </NavigationContainer>
     )
 }

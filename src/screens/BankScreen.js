@@ -5,13 +5,22 @@ import {collection, addDoc, orderBy, query, onSnapshot, doc} from 'firebase/fire
 import { auth, database } from "../../firebase";
 import { ref } from "firebase/storage";
 import { CardList } from "../components/CardList";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { BankScore } from "../components/BankScore";
 
 export const BankScreen = () => {
     
     return(
-        <View>
-            
+        <View style={styles.wrapper}>
+            <BankScore/>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        backgroundColor: 'white',
+        padding: 20
+    }
+})

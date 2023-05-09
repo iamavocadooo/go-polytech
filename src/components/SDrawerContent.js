@@ -6,17 +6,18 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 
 export const SDrawerContent = (props) => {
+    const{deleteLocalEmail} = useContext(AppContext)
     const handleSignOut = () => {
       signOut(auth)
       .then(() => {
-        
+        deleteLocalEmail()
       })
       .catch(error => alert(error.message))
     }
     return (
         <DrawerContentScrollView {...props}>
           <DrawerItemList {...props} />
-          <DrawerItem label="Режим а" onPress={() => handleSignOut()}/>
+          <DrawerItem label="Режим аббитуриента" onPress={() => props.navigation.navigate("NoS")}/>
           <DrawerItem label="Выйти из аккаунта" onPress={() => handleSignOut()}/>
         </DrawerContentScrollView>
     )

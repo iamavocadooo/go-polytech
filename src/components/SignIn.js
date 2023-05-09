@@ -4,19 +4,24 @@ import { THEME } from "../ui/Theme";
 import { CustomInput } from "../ui/CustomInput";
 import { CustomButton } from "../ui/CustomButton";
 import { GoSignUp } from "./GoSignUp";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { AppContext } from "../ContextApi/context";
+import { CustomVerl } from "../ui/CustomVer";
 
 export const SignIn = ({navigation}) => {
-    const{f} = useContext(AppContext)
+    const{f, getLocalEmail, setLocalEmail, deleteLocalEmail, Email, Password} = useContext(AppContext)
     const[error, setError] = useState(false)
+    const[modalVisible, setModalVisible] = useState(false)
     const handleSignIn = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed in 
           const user = userCredential.user;
+          if (!user.emailVerified) {
+            setModalVisible(true)
+          }
           console.log(user)
+          setLocalEmail(email, password)
           f()
           // ...
         })
@@ -28,6 +33,24 @@ export const SignIn = ({navigation}) => {
           // ..
         });
     }
+
+    getLocalEmail()
+    console.log(Email)
+    if (Email) {
+      console.log(Email)
+      signInWithEmailAndPassword(auth, Email, Password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+        f()
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message
+        console.log(errorMessage)
+      })
+    }
+    
     const[loginValue, setLoginValue] = useState('');
     const[passwordValue, setPasswordValue] = useState('');
     return(
@@ -41,6 +64,7 @@ export const SignIn = ({navigation}) => {
         }
             <CustomButton style={styles.button} text='Вход' onPress={() => handleSignIn(loginValue, passwordValue)}/>
             <GoSignUp setError={setError} navigation={navigation} />
+            <CustomVerl  modalVisible={modalVisible} setModalVisible={setModalVisible}/>
         </View>
     )
 }

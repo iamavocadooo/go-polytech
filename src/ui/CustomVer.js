@@ -2,22 +2,8 @@ import React, { useState } from "react"
 import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native"
 import { CustomInput } from "./CustomInput";
 
-export const CustomModal = ({modalVisible, setModalVisible, navigation}) => {
-    const handleSignIn = (email, password) => {
-        signInWithEmailAndPassword(authIIN, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          navigation.navigate("S", {screen: ' '})
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage)
-          // ..
-        });
-    }
+export const CustomVerl = ({modalVisible, setModalVisible, navigation}) => {
+    
     return(
         <Modal
         animationType="slide"
@@ -28,11 +14,10 @@ export const CustomModal = ({modalVisible, setModalVisible, navigation}) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text>К сожалению вы не можете войти, так как не являетесь студентом колледжа!</Text>
+            <Text>Ваш аккаунт не верифецирован!</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => {setModalVisible(!modalVisible)
-                }}>
+              onPress={() => {() => setModalVisible(false)}}>
               <Text style={styles.textStyle}>Хорошо</Text>
             </Pressable>
           </View>
