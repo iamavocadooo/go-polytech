@@ -44,7 +44,7 @@ export const SignUp = ({navigation}) => {
         const user = userCredential.user;
         setError(false)
         addDoc(collection(database, "users"), {
-          studentId: auth.currentUser.uid,  
+          studentId: auth.currentUser.uid,
           name:'',
           surname: '',
           dadname: '',

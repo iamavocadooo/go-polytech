@@ -19,11 +19,7 @@ export const NoSDrawerContent = (props) => {
     }
   }
   const handleSignOut = () => {
-    signOut(auth)
-    .then(() => {
-      deleteLocalEmail()
-    })
-    .catch(error => alert(error.message))
+    deleteLocalEmail().then(() => signOut(auth)).catch(error=> alert(error.message))
   }
     return (
         <DrawerContentScrollView {...props}>

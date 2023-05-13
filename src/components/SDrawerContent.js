@@ -8,11 +8,7 @@ import { signOut } from "firebase/auth";
 export const SDrawerContent = (props) => {
     const{deleteLocalEmail} = useContext(AppContext)
     const handleSignOut = () => {
-      signOut(auth)
-      .then(() => {
-        deleteLocalEmail()
-      })
-      .catch(error => alert(error.message))
+      deleteLocalEmail().then(() => signOut(auth)).catch(error=> alert(error.message))
     }
     return (
         <DrawerContentScrollView {...props}>
