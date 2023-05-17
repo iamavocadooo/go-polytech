@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Image, Pressable, TouchableOpacity } from "react-native";
 import { CustomDrawer } from "../ui/CustomDrawer";
 import Poly from '../images/poly.jpeg'
 import { Button } from "react-native";
@@ -14,13 +14,26 @@ export const SubmitAppScreen = ({navigation}) => {
     return (
       <View style={styles.wrapper}>
         <LinearGradient
-         // Background Linear Gradient
-         colors={['#16d0ca', '#1635d0']}
-         style={styles.background}>
-        </LinearGradient>
+          // Background Linear Gradient
+          colors={["#BA60FF", "#5C6FFA"]}
+          style={styles.background}
+        ></LinearGradient>
         <Text style={styles.headerText}>Зачем Вам стоит поступать к нам?</Text>
-        <Text style={styles.text}>современный колледж стать настоящим профессионалом своего ремесла, то оставтье заявку на поступление</Text>
-        {/* <Button title="sdasds" onPress={file}/> */}
+        <Text style={styles.text}>- Cовременный колледж</Text>
+        <Text style={styles.text}>- Cтать настоящим профессионалом</Text>
+        <Text style={styles.text}>- Гранты</Text>
+        <Text style={styles.text}>- Поступление на основе аттестатов</Text>
+
+        
+        <TouchableOpacity style={styles.button}>
+        <LinearGradient
+          // Background Linear Gradient
+          colors={["#00c7c0", "#21acfd"]}
+          style={{flex: 1, borderRadius: 30, elevation: 20, shadowColor: '#21acfd', shadowOffset: 1, shadowRadius: 10, justifyContent: 'center', alignItems: 'center'}}
+        >
+          <Text style={styles.textStyle}>Оставить заявку</Text>
+        </LinearGradient>
+        </TouchableOpacity>
       </View>
     );
     }
@@ -30,8 +43,8 @@ export const SubmitAppScreen = ({navigation}) => {
         flex: 1,
         justifyContent: 'flex-start',
         backgroundColor: '#fff',
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: 25,
+        paddingRight: 25,
       },
       headerText:{
         marginTop: 30,
@@ -45,12 +58,22 @@ export const SubmitAppScreen = ({navigation}) => {
         fontSize: 20,
         fontWeight: '300'
       },
+      textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 20
+      },
+      button: {
+        marginTop: 100,
+        height: 60,
+        width: '100%',
+        borderRadius: 30
+      },
       background: {
         position: 'absolute',
         left: 0,
         right: 0,
         top: 0,
         height: '100%'
-    },
-
-    })
+    }})

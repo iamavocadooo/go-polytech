@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, TextInput, Text } from "react-native";
 import { THEME } from "../ui/Theme";
 import { CustomInput } from "../ui/CustomInput";
@@ -34,23 +34,36 @@ export const SignIn = ({navigation}) => {
         });
     }
 
+    // getLocalEmail()
+    // console.log(Email)
+    // if (Email) {
+    //   console.log(Email)
+    //   signInWithEmailAndPassword(auth, Email, Password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user;
+    //     console.log(user)
+    //     f()
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message
+    //     console.log(errorMessage)
+    //   })
+    // }
     getLocalEmail()
-    console.log(Email)
     if (Email) {
-      console.log(Email)
       signInWithEmailAndPassword(auth, Email, Password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user)
-        f()
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message
-        console.log(errorMessage)
-      })
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          f();
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     }
-    
     const[loginValue, setLoginValue] = useState('');
     const[passwordValue, setPasswordValue] = useState('');
     return(
@@ -59,7 +72,7 @@ export const SignIn = ({navigation}) => {
             <CustomInput value={passwordValue} setValue={setPasswordValue} placeholder={"пароль"} secureTextEntry={true}/>
             {
           error ? <Text style={styles.error}>
-          Неверный логин или пароль!
+          Неверный логин или пароль, или Ваш аккаунт не подтвержден!
         </Text> : false
         }
             <CustomButton style={styles.button} text='Вход' onPress={() => handleSignIn(loginValue, passwordValue)}/>

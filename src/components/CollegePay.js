@@ -3,14 +3,13 @@ import { GiftedChat } from "react-native-gifted-chat/lib";
 import {collection, addDoc, orderBy, query, onSnapshot, doc} from 'firebase/firestore'
 import { auth, database } from "../../firebase";
 import { ref } from "firebase/storage";
-import { CardList } from "../components/CardList";
+import { CardList } from "./CardList";
 import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { AppContext } from "../ContextApi/context";
 
-export const BankScore = () => {
+export const CollegePay = () => {
     const{userBankInfo} = useContext(AppContext)
-    console.log(userBankInfo[0])
     return (
       // <View style={styles.wrapper}>
       //     <Text style={styles.text}>Баланс:</Text>
@@ -29,7 +28,7 @@ export const BankScore = () => {
         // Button Linear Gradient
         style={styles.wrapper}
       >
-        <Text style={styles.text}>Баланс:</Text>
+        <Text style={styles.text}>Оплата за обучение:</Text>
         <View style={styles.scoreWrapper}>
           <Text
             style={{
@@ -40,7 +39,7 @@ export const BankScore = () => {
               fontWeight: "700",
             }}
           >
-            {userBankInfo[0].bankScore}
+            {userBankInfo[0].studyPay}
           </Text>
         </View>
       </View>

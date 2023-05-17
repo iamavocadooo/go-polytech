@@ -2,28 +2,53 @@ import React, { useState } from "react"
 import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native"
 import { CustomInput } from "./CustomInput";
 
-export const CustomModal = ({modalVisible, setModalVisible}) => {
-    return(
-        <Modal
+export const CustomModalProfile = ({modalVisible, setModalVisible}) => {
+    const[nickValue, setNickValue] = useState('');
+    return (
+      <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
-        }}>
+        }}
+      >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text>К сожалению вы не можете войти, так как не являетесь студентом колледжа!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => {setModalVisible(!modalVisible)
-                }}>
-              <Text style={styles.textStyle}>Хорошо</Text>
-            </Pressable>
+            <CustomInput
+              value={nickValue}
+              setValue={setNickValue}
+              placeholder={"Введите новый ник"}
+              secureTextEntry={false}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-around",
+                width: 300,
+              }}
+            >
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}
+              >
+                <Text style={styles.textStyle}>Хорошо</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}
+              >
+                <Text style={styles.textStyle}>Хорошо</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
-    )
+    );
 }
 
 
@@ -37,7 +62,7 @@ const styles = StyleSheet.create({
     modalView: {
       margin: 20,
       backgroundColor: 'white',
-      width: 345,
+      width: '90%',
       borderRadius: 20,
       padding: 35,
       alignItems: 'center',

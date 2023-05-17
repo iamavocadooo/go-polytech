@@ -53,6 +53,11 @@ export const SignUp = ({navigation}) => {
           isStudent: false,
           nickName: ''
         })
+        addDoc(collection(database, "bank"), {
+          studentId: auth.currentUser.uid,
+          bankScore: 0,
+          studyPay: 0
+        })
         setLocalEmail(email, password)
         f()
       })
