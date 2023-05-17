@@ -35,3 +35,18 @@ export const DATA = [
     title: "Article",
   }
 ]
+
+export const sliderData = [
+  {
+    title: '1',
+    image: require('./src/images/1.jpg')
+  },
+  {
+    title: '2',
+    image: require('./src/images/2.jpg')
+  },
+  {
+    title: '3',
+    image: require('./src/images/3.jpg')
+  },
+]

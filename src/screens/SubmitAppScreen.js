@@ -5,11 +5,20 @@ import Poly from '../images/poly.jpeg'
 import { Button } from "react-native";
 import * as DocumentPicker from 'expo-document-picker';
 import { LinearGradient } from "expo-linear-gradient";
+// import Carousel from "react-native-snap-carousel";
+import { sliderData } from "../../data";
+import { BannerSlider } from "../components/BannerSlider";
+import { windowWidth } from "../utils/Dimensions";
 
 export const SubmitAppScreen = ({navigation}) => {
   const file = async() => {
     let result = await DocumentPicker.getDocumentAsync({});
     alert(result.uri)
+  }
+
+
+  const renderBanner = ({item, index}) => {
+    return <BannerSlider data={item}/>
   }
     return (
       <View style={styles.wrapper}>
@@ -23,7 +32,13 @@ export const SubmitAppScreen = ({navigation}) => {
         <Text style={styles.text}>- Cтать настоящим профессионалом</Text>
         <Text style={styles.text}>- Гранты</Text>
         <Text style={styles.text}>- Поступление на основе аттестатов</Text>
-
+        {/* <Carousel
+          ref={(c) => this._carousel = c}
+          data={sliderData}
+          renderItem={renderBanner}
+          sliderWidth={windowWidth-45}
+          itemWidth={300}
+        /> */}
         
         <TouchableOpacity style={styles.button}>
         <LinearGradient

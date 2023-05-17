@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth, database } from "../../firebase";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, getDoc, onSnapshot, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import * as SecureStore from 'expo-secure-store';
 
 
@@ -13,12 +13,21 @@ export const AppProvider = ({children}) =>{
     const [userBankInfo, setUserBankInfo] = useState(null)
     const [Email, SetEmail] = useState(null)
     const [Password, SetPassword] = useState(null)
+
+    const changeNick = (nick) => {
+      const ref = doc(database, 'users', userInfo[0].id)
+      updateDoc(ref, {
+        nickName: nick
+      })
+    }
+
     const f = () => {
         let usersRef = collection(database, "users");
         let q = query(usersRef, where("studentId", "==", auth.currentUser.uid));
         onSnapshot(q, (snapshot) => {
           setUserInfo(
             snapshot.docs.map((doc) => ({
+              id: doc.id,
               name: doc.data().name,
               nickname: doc.data().nickName,
               surname: doc.data().surname,
@@ -60,7 +69,7 @@ export const AppProvider = ({children}) =>{
 
             
     return(
-        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, Email, Password}}>
+        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, Email, Password, changeNick}}>
             {children}
         </AppContext.Provider>
     )

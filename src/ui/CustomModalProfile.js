@@ -1,9 +1,13 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native"
 import { CustomInput } from "./CustomInput";
+import { doc } from "firebase/firestore";
+import { database } from "../../firebase";
+import { AppContext } from "../ContextApi/context";
 
 export const CustomModalProfile = ({modalVisible, setModalVisible}) => {
     const[nickValue, setNickValue] = useState('');
+    const{changeNick} = useContext(AppContext)
     return (
       <Modal
         animationType="slide"
@@ -39,10 +43,11 @@ export const CustomModalProfile = ({modalVisible, setModalVisible}) => {
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
-                  setModalVisible(!modalVisible);
+                  changeNick(nickValue)
+                  setModalVisible(!modalVisible)
                 }}
               >
-                <Text style={styles.textStyle}>Хорошо</Text>
+                <Text style={styles.textStyle}>Сохранить</Text>
               </Pressable>
             </View>
           </View>
