@@ -50,20 +50,32 @@ export const SignIn = ({navigation}) => {
     //     console.log(errorMessage)
     //   })
     // }
-    getLocalEmail()
-    if (Email) {
-      signInWithEmailAndPassword(auth, Email, Password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-          f();
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage);
-        });
-    }
+    useEffect(() => {
+      try {
+        getLocalEmail()
+      } catch (error) {
+        console.log(error)
+      }finally{
+        console.log(Email, Password)
+        if (Email) {
+        signInWithEmailAndPassword(auth, Email, Password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+            f();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            console.log("s");
+          });
+      }
+      }
+          
+          
+    }, [])
+    
     const[loginValue, setLoginValue] = useState('');
     const[passwordValue, setPasswordValue] = useState('');
     return(

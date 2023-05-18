@@ -35,6 +35,7 @@ export const SignUp = ({navigation}) => {
       .then((userCredential) => {
         // Signed in 
         if (!auth.currentUser.emailVerified) {
+          console.log('r')
           sendEmailVerification(auth.currentUser).then((response) => {
             console.log(response)
           } ).catch(error => {

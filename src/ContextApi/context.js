@@ -63,8 +63,10 @@ export const AppProvider = ({children}) =>{
         }
     
         const getLocalEmail = async() => {
-          SetEmail(await SecureStore.getItemAsync("email"));
-          SetPassword(await SecureStore.getItemAsync("password"));
+          const email = await SecureStore.getItemAsync("email")
+          const password =  await SecureStore.getItemAsync("password")
+          SetEmail(email);
+          SetPassword(password);
         }
 
             

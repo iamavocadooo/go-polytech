@@ -8,6 +8,7 @@ import { LentaScreen } from '../screens/LentaScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { BankScreen } from '../screens/BankScreen';
 import { ChatsScreen } from '../screens/ChatsScreen';
+import { PeopleScreen } from '../screens/PeopleScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,8 +43,8 @@ export const SBottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Chast"
-        component={LentaScreen}
+        name="People"
+        component={PeopleScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
