@@ -11,13 +11,20 @@ import logo from '../images/logo.jpg'
 import yoda from '../images/yoda.jpg'
 import { AppContext } from "../ContextApi/context";
 import { CustomModalProfile } from "../ui/CustomModalProfile";
+import { CustomDrawerBottom } from "../ui/CustomDrawerBottom";
 
 export const ProfileScreen = () => {
     const{userInfo, f} = useContext(AppContext)
     const[modalVisible, setModalVisible] = useState(false)
+    
+    
+    // Function to close the bottom sheet
+    
+
     return (
       <View style={styles.wrapper}>
         <CustomModalProfile modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+        <CustomDrawerBottom/>
         <View style={styles.header}>
           <ImageBackground
             source={yoda}

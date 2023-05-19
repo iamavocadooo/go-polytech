@@ -8,7 +8,7 @@ import { PersonItem } from "../components/PersonItem";
 import { AppContext } from "../ContextApi/context";
 import { PersonScreen } from "./PersonScreen";
 
-export const PeopleScreen = () => {
+export const PeopleScreen = ({navigation}) => {
     const[users, setUsers] = useState([])
     const{userInfo} = useContext(AppContext)
     const[value, setValue] = useState('')
@@ -30,7 +30,7 @@ export const PeopleScreen = () => {
             
     }, [value])
 
-    return selectedUser ? <PersonScreen setSelectedUser={setSelectedUser}/> :
+    return selectedUser ? <PersonScreen navigation={navigation} userId={selectedUser} setSelectedUser={setSelectedUser}/> :
         
         <View style={styles.wrapper}>
             <CustomInput value={value} setValue={setValue} placeholder={"Введите ФИО или ник"} secureTextEntry={false}/>

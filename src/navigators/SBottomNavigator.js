@@ -9,6 +9,7 @@ import { ProfileScreen } from '../screens/ProfileScreen';
 import { BankScreen } from '../screens/BankScreen';
 import { ChatsScreen } from '../screens/ChatsScreen';
 import { PeopleScreen } from '../screens/PeopleScreen';
+import { CustomDrawerB } from '../ui/CustomDrawerB';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,10 +34,10 @@ export const SBottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Chat"
+        name="Chats"
         component={ChatsScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarIcon: ({ color, size }) => (
             <Entypo name="chat" color={color} size={size} />
           ),
@@ -46,7 +47,10 @@ export const SBottomNavigator = () => {
         name="People"
         component={PeopleScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: 'Люди',
+          headerTitleAlign: 'center',
+          headerStyle: {height: 75},
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="user-friends" color={color} size={size} />
           ),
@@ -66,7 +70,11 @@ export const SBottomNavigator = () => {
         name="Profile"
         component={ProfileScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: 'Профиль',
+          headerTitleAlign: 'center',
+          headerStyle: {height: 75},
+          headerRight: () =>  <CustomDrawerB size={24} name="menu"/>,
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="user" color={color} size={size} />
           ),

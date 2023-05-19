@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 export const PersonItem = ({surname, name, dadname, userId, setSelectedUser}) => {
     
     return(
-            <TouchableOpacity style={styles.wrapper} onPress={() => setSelectedUser(true)}>
+            <TouchableOpacity style={styles.wrapper} onPress={() => setSelectedUser(userId)}>
                 <Text>{surname + name + dadname + " " + userId}</Text>
             </TouchableOpacity>
     )

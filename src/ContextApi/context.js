@@ -11,7 +11,16 @@ export const AppProvider = ({children}) =>{
     const [user, setUser] = useState(null)
     const [userInfo, setUserInfo] = useState(null)
     const [userBankInfo, setUserBankInfo] = useState(null)
-    const [Password, SetPassword] = useState(null)
+    const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+    
+    // Function to open the bottom sheet 
+    const handleOpenBottomSheet = () => {
+      setIsBottomSheetOpen(true);
+    };
+
+    const handleCloseBottomSheet = () => {
+      setIsBottomSheetOpen(false);
+    };
 
     const changeNick = (nick) => {
       const ref = doc(database, 'users', userInfo[0].id)
@@ -75,7 +84,7 @@ export const AppProvider = ({children}) =>{
 
             
     return(
-        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick}}>
+        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick, isBottomSheetOpen, handleCloseBottomSheet, handleOpenBottomSheet}}>
             {children}
         </AppContext.Provider>
     )
