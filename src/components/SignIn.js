@@ -10,7 +10,7 @@ import { AppContext } from "../ContextApi/context";
 import { CustomVerl } from "../ui/CustomVer";
 
 export const SignIn = ({navigation}) => {
-    const{f, getLocalEmail, setLocalEmail, deleteLocalEmail, Email, Password} = useContext(AppContext)
+    const{f, getLocalEmail, setLocalEmail, deleteLocalEmail} = useContext(AppContext)
     const[error, setError] = useState(false)
     const[modalVisible, setModalVisible] = useState(false)
     const handleSignIn = (email, password) => {
@@ -51,14 +51,11 @@ export const SignIn = ({navigation}) => {
     //   })
     // }
     useEffect(() => {
-      try {
-        getLocalEmail()
-      } catch (error) {
-        console.log(error)
-      }finally{
-        console.log(Email, Password)
-        if (Email) {
-        signInWithEmailAndPassword(auth, Email, Password)
+      (async() => {
+        let data = await getLocalEmail()
+        console.log(data)
+        if (data.email) {
+        signInWithEmailAndPassword(auth, data.email, data.password)
           .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
@@ -71,9 +68,8 @@ export const SignIn = ({navigation}) => {
             console.log("s");
           });
       }
-      }
-          
-          
+      })()
+
     }, [])
     
     const[loginValue, setLoginValue] = useState('');

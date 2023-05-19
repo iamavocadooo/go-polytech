@@ -11,7 +11,6 @@ export const AppProvider = ({children}) =>{
     const [user, setUser] = useState(null)
     const [userInfo, setUserInfo] = useState(null)
     const [userBankInfo, setUserBankInfo] = useState(null)
-    const [Email, SetEmail] = useState(null)
     const [Password, SetPassword] = useState(null)
 
     const changeNick = (nick) => {
@@ -55,23 +54,28 @@ export const AppProvider = ({children}) =>{
           await SecureStore.setItemAsync('password', password);
         }
     
+        // const deleteLocalEmail = async() => {
+        //   SetEmail(null)
+        //   SetPassword(null)
+        //   await SecureStore.deleteItemAsync('email');
+        //   await SecureStore.deleteItemAsync('password');
+        // }
+
         const deleteLocalEmail = async() => {
-          SetEmail(null)
-          SetPassword(null)
-          await SecureStore.deleteItemAsync('email');
-          await SecureStore.deleteItemAsync('password');
+          SecureStore.deleteItemAsync('email');
+          SecureStore.deleteItemAsync('password');
         }
     
         const getLocalEmail = async() => {
+          
           const email = await SecureStore.getItemAsync("email")
           const password =  await SecureStore.getItemAsync("password")
-          SetEmail(email);
-          SetPassword(password);
+          return {email, password}
         }
 
             
     return(
-        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, Email, Password, changeNick}}>
+        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick}}>
             {children}
         </AppContext.Provider>
     )
