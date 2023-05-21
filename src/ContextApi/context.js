@@ -30,11 +30,16 @@ export const AppProvider = ({children}) =>{
       })
     }
 
-    const updateChats = (chat, name) => {
+    const updateChats = async(chat, name, userId, userName) => {
       const ref = doc(database, 'users', userInfo[0].id)
+      const ref2 = doc(database, 'users', userId)
+      const docSnap = getDoc(ref2)
       console.log(chat, name)
       updateDoc(ref, {
         chats: [...userInfo[0].chats, {chat, name}]
+      })
+      updateDoc(ref2, {
+        chats: [...(await docSnap).data().chats, {chat, name: userName }]
       })
     }
 

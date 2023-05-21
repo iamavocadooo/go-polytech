@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export const ChatItem = ({chatId, name}) => {
+export const ChatItem = ({chatId, name, setChat}) => {
     
     return(
-            <TouchableOpacity style={styles.wrapper}>
+            <TouchableOpacity onPress={() => setChat(chatId)} style={styles.wrapper}>
                 <Text>{name}</Text>
             </TouchableOpacity>
     )

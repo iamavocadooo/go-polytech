@@ -6,11 +6,13 @@ import { database } from "../../firebase";
 import { AppContext } from "../ContextApi/context";
 import { ChatItem } from "../components/ChatItem";
 import { CustomInput } from "../ui/CustomInput";
+import { ChatScreen } from "./ChatScreen";
 
 export const ChatsScreen = () =>{
     const[chats, setChats] = useState([])
     const[value, setValue] = useState('')
     const{userInfo} = useContext(AppContext)
+    const[selectedChat, setSelectedChat] = useState(false)
     useEffect(() => {
         let chatsRef = doc(database, "chats", 'privateChats');
         const q = query()
@@ -43,17 +45,17 @@ export const ChatsScreen = () =>{
         
     }, [value])
 
-    return(
+    return selectedChat ? <ChatScreen chatId={selectedChat} setChat={setSelectedChat}/> :
         <View style={styles.wrapper}>
             <CustomInput value={value} setValue={setValue} placeholder={"Введите ФИО или ник"} secureTextEntry={false}/>
             <FlatList
                 data={chats}
-                renderItem={({item}) => <ChatItem chatId={item.id} name={item.name}/>}
+                renderItem={({item}) => <ChatItem setChat={setSelectedChat} chatId={item.id} name={item.name}/>}
                 keyExtractor={(item) => item.id}
                 
             />
         </View>
-    )
+    
 }
 
 const styles = StyleSheet.create({

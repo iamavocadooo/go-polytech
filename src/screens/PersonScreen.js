@@ -21,15 +21,19 @@ export const PersonScreen = ({userId, setSelectedUser, navigation}) => {
         return user
     }
     const colRef = collection(database, 'chats', 'privateChats', userInfo[0].id + userId)
+    const colRef2 = collection(database, 'chats', 'privateChats', userId + userInfo[0].id)
+
 
     useLayoutEffect(() => {
-        
         onSnapshot(query(colRef), (snapshot) => {
-           if (snapshot.docs.length == 0) {
-             setMessageItemVisible(true)}
-             else{
-                setMessageItemVisible(false)
-             }
+            onSnapshot(query(colRef2), (snapshotT) => {
+                if (snapshot.docs.length == 0 && snapshotT.docs.length == 0) {
+                    setMessageItemVisible(true)
+                }
+                else{
+                    setMessageItemVisible(false)
+                }
+            })
         })
         getPersonInfo().then((user) => {
             navigation.setOptions({ 
@@ -44,14 +48,14 @@ export const PersonScreen = ({userId, setSelectedUser, navigation}) => {
             console.log(snapshot.docs.length)
         })
         addDoc(colRef, {
-            message: messageValue,
+            text: messageValue,
             createdAt: new Date(),
-            name: auth.currentUser.email
+            user: {_id: auth?.currentUser?.email}
         })
         const docRef = doc(database, "users", userId);
         const docSnap = getDoc(docRef);
         console.log(userInfo[0].id + userId)
-        updateChats(userInfo[0].id + userId, (await docSnap).data().name)
+        updateChats(userInfo[0].id + userId, (await docSnap).data().name, userId, userInfo[0].name)
 
         
     }
