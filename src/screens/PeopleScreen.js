@@ -17,9 +17,10 @@ export const PeopleScreen = ({navigation}) => {
     useEffect(() => {
         let usersRef = collection(database, "users");
         let q = query(usersRef);
+        console.log('s')
         onSnapshot(q, (snapshot) => {
                 
-           setUsers(snapshot.docs.filter((doc) => (doc.data().surname + ' ' + doc.data().name + ' ' + doc.data().dadname + doc.data().nickName).indexOf(value) >= 0 && doc.id != userInfo[0].id).slice(0, 5)
+           setUsers(snapshot.docs.filter((doc) => (doc.data().surname + ' ' + doc.data().name + ' ' + doc.data().dadname + doc.data().nickName).indexOf(value) >= 0 && doc.id != userInfo[0].id && doc.data().isStudent == true).slice(0, 5)
            .map((doc) => ({
                 id: doc.id,
                 name: doc.data().name,
@@ -27,7 +28,7 @@ export const PeopleScreen = ({navigation}) => {
                 surname: doc.data().surname
             })))
         })
-            
+        
     }, [value])
 
     return selectedUser ? <PersonScreen navigation={navigation} userId={selectedUser} setSelectedUser={setSelectedUser}/> :

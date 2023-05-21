@@ -12,6 +12,7 @@ export const AppProvider = ({children}) =>{
     const [userInfo, setUserInfo] = useState(null)
     const [userBankInfo, setUserBankInfo] = useState(null)
     const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+    const [chats, setChats] = useState([])
     
     // Function to open the bottom sheet 
     const handleOpenBottomSheet = () => {
@@ -29,6 +30,14 @@ export const AppProvider = ({children}) =>{
       })
     }
 
+    const updateChats = (chat, name) => {
+      const ref = doc(database, 'users', userInfo[0].id)
+      console.log(chat, name)
+      updateDoc(ref, {
+        chats: [...userInfo[0].chats, {chat, name}]
+      })
+    }
+
     const f = () => {
         let usersRef = collection(database, "users");
         let q = query(usersRef, where("studentId", "==", auth.currentUser.uid));
@@ -40,7 +49,8 @@ export const AppProvider = ({children}) =>{
               nickname: doc.data().nickName,
               surname: doc.data().surname,
               dadname: doc.data().dadname,
-              isStudent: doc.data().isStudent
+              isStudent: doc.data().isStudent,
+              chats: doc.data().chats
             }))
           );
         }
@@ -84,7 +94,7 @@ export const AppProvider = ({children}) =>{
 
             
     return(
-        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick, isBottomSheetOpen, handleCloseBottomSheet, handleOpenBottomSheet}}>
+        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick, isBottomSheetOpen, handleCloseBottomSheet, handleOpenBottomSheet, updateChats}}>
             {children}
         </AppContext.Provider>
     )

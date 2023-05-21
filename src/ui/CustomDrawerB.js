@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../ContextApi/context';
 
-export const CustomDrawerB = ({name, size, }) => {
+export const CustomDrawerB = ({name, size, navigation }) => {
   const{handleOpenBottomSheet} = useContext(AppContext)
     return (
         
@@ -18,7 +18,8 @@ export const CustomDrawerB = ({name, size, }) => {
           color="black"
           backgroundColor="#fff"
           height={40}
-          onPress={() =>handleOpenBottomSheet()}
+          // onPress={() =>handleOpenBottomSheet()}
+          onPress={navigation.openDrawer}
         />
       </View>
     );

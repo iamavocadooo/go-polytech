@@ -13,7 +13,7 @@ import { CustomDrawerB } from '../ui/CustomDrawerB';
 
 const Tab = createBottomTabNavigator();
 
-export const SBottomNavigator = () => {
+export const SBottomNavigator = ({navigation}) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -74,7 +74,7 @@ export const SBottomNavigator = () => {
           headerTitle: 'Профиль',
           headerTitleAlign: 'center',
           headerStyle: {height: 75},
-          headerRight: () =>  <CustomDrawerB size={24} name="menu"/>,
+          headerRight: () =>  <CustomDrawerB size={24} name="menu" navigation={navigation}/>,
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="user" color={color} size={size} />
           ),

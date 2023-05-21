@@ -15,6 +15,7 @@ export const NoSDrawerContent = (props) => {
       setModalVisible(true)
     }
     else{
+      props.navigation.closeDrawer()
       props.navigation.navigate('S', {screen: ' '})
     }
   }
