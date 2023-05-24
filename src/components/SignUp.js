@@ -52,7 +52,8 @@ export const SignUp = ({navigation}) => {
           chats: [],
           posts: [],
           isStudent: false,
-          nickName: ''
+          nickName: '',
+          groupName: ''
         })
 
         addDoc(collection(database, "bank"), {
