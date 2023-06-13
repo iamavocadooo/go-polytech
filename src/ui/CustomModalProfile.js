@@ -38,7 +38,7 @@ export const CustomModalProfile = ({modalVisible, setModalVisible}) => {
                   setModalVisible(!modalVisible);
                 }}
               >
-                <Text style={styles.textStyle}>Хорошо</Text>
+                <Text style={styles.textStyle}>Отмена</Text>
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonClose]}

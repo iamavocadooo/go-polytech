@@ -10,6 +10,7 @@ import { BankScreen } from '../screens/BankScreen';
 import { ChatsScreen } from '../screens/ChatsScreen';
 import { PeopleScreen } from '../screens/PeopleScreen';
 import { CustomDrawerB } from '../ui/CustomDrawerB';
+import { ChatsTopTabNavigator } from './ChatsTopTabNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,8 +35,8 @@ export const SBottomNavigator = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="Chats"
-        component={ChatsScreen}
+        name="Чаты"
+        component={ChatsTopTabNavigator}
         options={{
           headerShown: true,
           tabBarIcon: ({ color, size }) => (

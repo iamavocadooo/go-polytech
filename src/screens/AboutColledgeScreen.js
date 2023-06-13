@@ -11,7 +11,7 @@ export const AboutColledgeScreen = ({}) => {
   }, [])
   return (
     <View>
-      <CardList/>
+      {/* <CardList/> */}
     </View>
   );
 }

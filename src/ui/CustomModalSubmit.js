@@ -24,7 +24,8 @@ export const CustomModalSubmit = ({modalVisible, setModalVisible}) => {
 
       const source = {uri: result.uri}
       setFile1(source)
-      setDoc1(source ? true : false)
+      setDoc1(source.uri ? true : false)
+      
       
     }
 
@@ -32,10 +33,9 @@ export const CustomModalSubmit = ({modalVisible, setModalVisible}) => {
       let result = await DocumentPicker.getDocumentAsync({})
       
       console.log(result)
-
       const source = {uri: result.uri}
       setFile2(source)
-      setDoc2(source ? true : false)
+      setDoc2(source.uri ? true : false)
       
    
     }
@@ -46,7 +46,7 @@ export const CustomModalSubmit = ({modalVisible, setModalVisible}) => {
 
       const source = {uri: result.uri}
       setFile3(source)
-      setDoc3(source ? true : false)
+      setDoc3(source.uri ? true : false)
    
     }
 

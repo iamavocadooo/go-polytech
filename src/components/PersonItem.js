@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export const PersonItem = ({surname, name, dadname, userId, setSelectedUser}) => {
+export const PersonItem = ({surname, nickName, name, dadname, userId, setSelectedUser}) => {
     
     return(
             <TouchableOpacity style={styles.wrapper} onPress={() => setSelectedUser(userId)}>
-                <Text>{surname + name + dadname + " " + userId}</Text>
+                <Text>{nickName == "" ? name + " " + surname : nickName}</Text>
             </TouchableOpacity>
     )
 }
@@ -13,9 +13,13 @@ export const PersonItem = ({surname, name, dadname, userId, setSelectedUser}) =>
 const styles = StyleSheet.create({
     wrapper: {
         width: "100%",
-        borderWidth: 1,
-        height: 60,
-        backgroundColor: '#d8a2a5'
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 1,
+        height: 75,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        paddingLeft: 20
+
 
     }
 })

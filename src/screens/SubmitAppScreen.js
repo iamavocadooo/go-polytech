@@ -34,7 +34,8 @@ export const SubmitAppScreen = ({navigation}) => {
       <View style={{flex: 1}}>
         <LinearGradient
           // Background Linear Gradient
-          colors={["#BA60FF", "#5C6FFA"]}
+          // colors={["#BA60FF", "#5C6FFA"]}
+          colors={["#da9fe0", "#1a94ff"]}
           style={styles.background}
         >
           <ScrollView style={{ flex: 1 }}>
@@ -53,7 +54,7 @@ export const SubmitAppScreen = ({navigation}) => {
                 ref={(c) => (this._carousel = c)}
                 data={sliderData}
                 renderItem={renderBanner}
-                sliderWidth={windowWidth - 45}
+                sliderWidth={windowWidth}
                 itemWidth={300}
               />
         
@@ -62,6 +63,7 @@ export const SubmitAppScreen = ({navigation}) => {
                 <LinearGradient
                   // Background Linear Gradient
                   colors={["#00c7c0", "#21acfd"]}
+                  // colors={["#000000", "#36363a"]}
                   style={{
                     flex: 1,
                     borderRadius: 30,
@@ -87,8 +89,6 @@ export const SubmitAppScreen = ({navigation}) => {
       wrapper: {
         flex: 1,
         justifyContent: 'flex-start',
-        paddingLeft: 25,
-        paddingRight: 25,
       },
       headerText:{
         marginTop: 30,
@@ -119,5 +119,6 @@ export const SubmitAppScreen = ({navigation}) => {
         left: 0,
         right: 0,
         top: 0,
-        height: '100%'
+        height: '100%',
+        transform:[{rotate: '0 deg'}]
     }})

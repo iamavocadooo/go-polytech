@@ -7,7 +7,7 @@ import { AppContext } from "../ContextApi/context";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import {collection, addDoc, orderBy, query, onSnapshot, doc} from 'firebase/firestore'
 import { auth, database } from "../../firebase";
-
+import { MaskedTextInput} from "react-native-mask-text";
 
 export const SignUp = ({navigation}) => {
     const {f, setLocalEmail} = useContext(AppContext)
@@ -15,6 +15,7 @@ export const SignUp = ({navigation}) => {
     const[passwordValue, setPasswordValue] = useState('');
     const[error, setError] = useState(false)
     const[confirmPasswordValue, setConfirmPasswordValue] = useState('');
+    const [phone, setPhone] = useState('');
     const minNumberofChars = 7;
     const maxNumberofChars = 20;
     const regularExpression  = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
@@ -72,11 +73,20 @@ export const SignUp = ({navigation}) => {
         // ..
       });
   }
-
-
+  const [maskedValue, setMaskedValue] = useState("");
+  const [unMaskedValue, setUnmaskedValue] = useState("");
 
     return (
       <View style={styles.wrapper}>
+        <MaskedTextInput
+        mask="99/99/9999"
+        onChangeText={(text, rawText) => {
+          setMaskedValue(text);
+          setUnmaskedValue(rawText);
+        }}
+        style={styles.input}
+        keyboardType="numeric"
+      />
         <CustomInput
           value={loginValue}
           setValue={setLoginValue}
@@ -84,6 +94,18 @@ export const SignUp = ({navigation}) => {
           secureTextEntry={false}
         />
         <CustomInput
+          value={passwordValue}
+          setValue={setPasswordValue}
+          placeholder={"Номер телефона"}
+          secureTextEntry={true}
+        />
+         <CustomInput
+          value={passwordValue}
+          setValue={setPasswordValue}
+          placeholder={"пароль"}
+          secureTextEntry={true}
+        />
+         <CustomInput
           value={passwordValue}
           setValue={setPasswordValue}
           placeholder={"пароль"}

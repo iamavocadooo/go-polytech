@@ -12,6 +12,8 @@ import yoda from '../images/yoda.jpg'
 import { AppContext } from "../ContextApi/context";
 import { CustomModalProfile } from "../ui/CustomModalProfile";
 import { CustomDrawerBottom } from "../ui/CustomDrawerBottom";
+import { LinearGradient } from "expo-linear-gradient";
+import back from "../images/3.jpg"
 
 export const ProfileScreen = () => {
     const{userInfo, f} = useContext(AppContext)
@@ -23,36 +25,46 @@ export const ProfileScreen = () => {
 
     return (
       <View style={styles.wrapper}>
-        <CustomModalProfile modalVisible={modalVisible} setModalVisible={setModalVisible}/>
-        <CustomDrawerBottom/>
-        <View style={styles.header}>
-          <ImageBackground
-            source={yoda}
-            style={{ width: "100%", overflow: "hidden" }}
-            resizeMode="cover"
-          ></ImageBackground>
-          <View
-            style={{
-              position: "absolute",
-              borderRadius: 50,
-              marginLeft: 50,
-              marginTop: 100,
-              width: 130,
-              height: 130,
-              elevation: 8,
-            }}
-          >
-            <Image
-              source={logo}
-              style={{ width: 130, height: 130, borderRadius: 50 }}
-            />
-          </View>
+        <CustomModalProfile
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+        <CustomDrawerBottom />
+        <View style={{ width: "100%" }}>
+          <ImageBackground style={{ width: "100%", height: 228 }} source={back}><LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(0,0,0,0.7)', 'transparent']}
+        style={{flex: 1, transform: [{rotate: '180 deg'}]}}
+      /></ImageBackground>
         </View>
-        <View style={styles.content}>
+        <View style={{ flex: 1, alignItems: "center" }}>
+          <Image
+            source={yoda}
+            resizeMode="contain"
+            style={{
+              height: 155,
+              width: 155,
+              borderRadius: 999,
+              borderColor: "#000000b3",
+              borderWidth: 4,
+              marginTop: -90,
+            }}
+          />
+          <Text style={{marginVertical: 8, fontSize: 20, fontWeight: '700', color: '#0030a8'}}>
+            {userInfo[0].name} {userInfo[0].surname}
+          </Text>
+        </View>
+        {/* <View style={styles.content}>
           <View style={styles.userInfo}>
             <View style={styles.field}>
               <Text style={styles.fieldName}>Ник:</Text>
-              <TouchableOpacity style={styles.info} activeOpacity={0.7} onPress={() => {setModalVisible(!modalVisible)}}>
+              <TouchableOpacity
+                style={styles.info}
+                activeOpacity={0.7}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}
+              >
                 <Text>{userInfo[0].nickname}</Text>
               </TouchableOpacity>
             </View>
@@ -74,9 +86,8 @@ export const ProfileScreen = () => {
                 <Text style={styles.text}>{userInfo[0].dadname}</Text>
               </View>
             </View>
-            
           </View>
-        </View>
+        </View> */}
       </View>
     );
 }
@@ -86,14 +97,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         flex: 1
     },
-    header: {
-        backgroundColor: THEME.MAIN_COLOR,
-        flex: 1,
-        borderBottomEndRadius: 60,
-        shadowColor: 'blue',
-    },
     content: {
-        flex: 3,
         justifyContent: 'flex-end',
         alignItems: 'center',
     },

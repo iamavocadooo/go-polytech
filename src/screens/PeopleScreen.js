@@ -25,7 +25,8 @@ export const PeopleScreen = ({navigation}) => {
                 id: doc.id,
                 name: doc.data().name,
                 dadname: doc.data().dadname,
-                surname: doc.data().surname
+                surname: doc.data().surname,
+                nickName: doc.data().nickName
             })))
         })
         
@@ -37,7 +38,7 @@ export const PeopleScreen = ({navigation}) => {
             <CustomInput value={value} setValue={setValue} placeholder={"Введите ФИО или ник"} secureTextEntry={false}/>
             <FlatList
                 data={users}
-                renderItem={({item}) => <PersonItem setSelectedUser={setSelectedUser} surname={item.surname} name={item.name} dadname={item.dadname} userId={item.id}/>}
+                renderItem={({item}) => <PersonItem setSelectedUser={setSelectedUser} nickName={item.nickName} surname={item.surname} name={item.name} dadname={item.dadname} userId={item.id}/>}
                 keyExtractor={(item) => item.id}
                 
             />

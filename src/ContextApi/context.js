@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth, database } from "../../firebase";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, getDoc, onSnapshot, query, updateDoc, where } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
 import * as SecureStore from 'expo-secure-store';
 
 
@@ -13,6 +13,7 @@ export const AppProvider = ({children}) =>{
     const [userBankInfo, setUserBankInfo] = useState(null)
     const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
     const [chats, setChats] = useState([])
+    const[news, setNews] = useState(null)
     
     // Function to open the bottom sheet 
     const handleOpenBottomSheet = () => {
@@ -55,7 +56,8 @@ export const AppProvider = ({children}) =>{
               surname: doc.data().surname,
               dadname: doc.data().dadname,
               isStudent: doc.data().isStudent,
-              chats: doc.data().chats
+              chats: doc.data().chats,
+              admin: doc.data().admin
             }))
           );
         }
@@ -71,6 +73,20 @@ export const AppProvider = ({children}) =>{
           );
         }
         )
+
+        usersRef = collection(database, "news");
+        q = query(usersRef, orderBy("createdAt"))
+        onSnapshot(q, (snapshot) => {
+          setNews(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              title: doc.data().title,
+              description: doc.data().description,
+              posterUrl: doc.data().posterUrl
+            }))
+          )
+        })
+
         }
     
         const setLocalEmail = async(email, password) => {
@@ -99,7 +115,7 @@ export const AppProvider = ({children}) =>{
 
             
     return(
-        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick, isBottomSheetOpen, handleCloseBottomSheet, handleOpenBottomSheet, updateChats}}>
+        <AppContext.Provider value={{user, userInfo, setUser, setUserInfo, userBankInfo, f, setLocalEmail, getLocalEmail, deleteLocalEmail, changeNick, isBottomSheetOpen, handleCloseBottomSheet, handleOpenBottomSheet, updateChats, news}}>
             {children}
         </AppContext.Provider>
     )

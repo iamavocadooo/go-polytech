@@ -55,7 +55,7 @@ export const PersonScreen = ({userId, setSelectedUser, navigation}) => {
         const docRef = doc(database, "users", userId);
         const docSnap = getDoc(docRef);
         console.log(userInfo[0].id + userId)
-        updateChats(userInfo[0].id + userId, (await docSnap).data().name, userId, userInfo[0].name)
+        updateChats(userInfo[0].id + userId, (await docSnap).data().name + " " + (await docSnap).data().surname, userId, userInfo[0].name + " " + userInfo[0].surname)
 
         
     }

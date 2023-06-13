@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 export const ChatItem = ({chatId, name, setChat}) => {
     
     return(
-            <TouchableOpacity onPress={() => setChat(chatId)} style={styles.wrapper}>
+            <TouchableOpacity activeOpacity={0.8} onPress={() => setChat(chatId)} style={styles.wrapper}>
                 <Text>{name}</Text>
             </TouchableOpacity>
     )
@@ -13,9 +13,9 @@ export const ChatItem = ({chatId, name, setChat}) => {
 const styles = StyleSheet.create({
     wrapper: {
         width: "100%",
-        borderWidth: 1,
-        height: 60,
-        backgroundColor: '#d8a2a5'
-
+        marginTop: 3,
+        elevation: 2,
+        height: 65,
+        backgroundColor: 'white'
     }
 })

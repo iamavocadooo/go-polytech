@@ -12,6 +12,7 @@ export const NoSBottomNavigator = () => {
       screenOptions={{
         tabBarStyle: { height: 65 },
         tabBarShowLabel: false,
+        
         tabBarInactiveTintColor: "#e8e8e8",
         tabBarActiveTintColor: "#3B71F3",
       }}

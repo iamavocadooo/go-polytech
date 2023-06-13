@@ -10,8 +10,8 @@ import { View } from "react-native";
 export const LentaScreen = () => {
     
     return(
-        <View>
-            <CardList/>
+        <View style={{flex: 1}}>
+            {/* <CardList/> */}
         </View>
     )
 }
