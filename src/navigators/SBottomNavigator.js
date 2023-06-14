@@ -11,6 +11,7 @@ import { ChatsScreen } from '../screens/ChatsScreen';
 import { PeopleScreen } from '../screens/PeopleScreen';
 import { CustomDrawerB } from '../ui/CustomDrawerB';
 import { ChatsTopTabNavigator } from './ChatsTopTabNavigator';
+import { SendPost } from '../components/SendPost';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +29,8 @@ export const SBottomNavigator = ({navigation}) => {
         name="Lenta"
         component={LentaScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerRight: () => <SendPost/>,
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="newspaper-o" color={color} size={size} />
           ),
@@ -57,7 +59,7 @@ export const SBottomNavigator = ({navigation}) => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Bank"
         component={BankScreen}
         options={{
@@ -66,7 +68,7 @@ export const SBottomNavigator = ({navigation}) => {
             <MaterialCommunityIcons name="account-cash" color={color} size={size} />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}

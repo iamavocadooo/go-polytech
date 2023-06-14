@@ -14,6 +14,7 @@ import { CustomModalProfile } from "../ui/CustomModalProfile";
 import { CustomDrawerBottom } from "../ui/CustomDrawerBottom";
 import { LinearGradient } from "expo-linear-gradient";
 import back from "../images/3.jpg"
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const ProfileScreen = () => {
     const{userInfo, f} = useContext(AppContext)
@@ -50,6 +51,10 @@ export const ProfileScreen = () => {
               marginTop: -90,
             }}
           />
+          <TouchableOpacity style={styles.icon} activeOpacity={0.8}>
+          <MaterialCommunityIcons  name="camera-account" size={24} color="white" />
+
+          </TouchableOpacity>
           <Text style={{marginVertical: 8, fontSize: 20, fontWeight: '700', color: '#0030a8'}}>
             {userInfo[0].name} {userInfo[0].surname}
           </Text>
@@ -127,5 +132,14 @@ const styles = StyleSheet.create({
     text: {
         color: '#919191',
         fontWeight: '600'
+    },
+    icon: {
+      position: 'absolute',
+      width: 40,
+      height: 40,
+      backgroundColor: 'black',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 20
     }
 })

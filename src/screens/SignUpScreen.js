@@ -15,14 +15,15 @@ export const SignUpScreen = ({navigation})=>{
 
 const styles = StyleSheet.create({
     wrapper: {
+      flex: 1,
         backgroundColor: '#fff',
         width: '100%',
         alignItems: 'center',
         padding: 20
     },
     logo: {
-        width: '70%',
-        height: '70%',
+        width: 175,
+        height: 175,
         borderColor: 'blue',
         borderWidth: 0,
         maxWidth: 300,
